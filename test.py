@@ -9,7 +9,7 @@ class Llama3:
         self.model = transformers.AutoModelForCausalLM.from_pretrained(self.model_id)
 
         # Use the model tokenizer
-        self.tokenizer = transformers.AutoTokenizer.from_pretrained(self.model_id)
+        self.tokenizer = transformers.AutoTokenizer.from_pretrained(self.model_id) 
 
         # Check if eos_token_id is set, if not, assign it to a default value
         if self.tokenizer.eos_token_id is None:
