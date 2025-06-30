@@ -1,0 +1,7 @@
+torch
+transformers
+dotenv
+uvicorn
+fastapi
+pymongo
+
