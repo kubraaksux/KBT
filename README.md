@@ -58,7 +58,7 @@ Before you begin, ensure you have the following installed:
 2. **Create a virtual environment** (recommended):
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
    ```
 
 3. **Install dependencies**:
@@ -103,6 +103,8 @@ Before you begin, ensure you have the following installed:
    ```env
    BACKEND_URL=http://localhost:8000
    ```
+
+   **Note**: This project uses React Router v7 with server-side rendering (SSR). Environment variables are accessed via `process.env` on the server and do not require the `VITE_` prefix.
 
 4. **Start the development server**:
    ```bash
