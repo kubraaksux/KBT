@@ -77,9 +77,7 @@ Here's how to start the complete project with MongoDB, backend, and frontend:
      ```bash
      sudo systemctl start mongod
      ```
-   - **Docker** (any platform):
-     
-     MongoDB should already be running from the docker run command above. Verify with:
+   - **Docker** (any platform) - MongoDB should already be running from the docker run command above. Verify with:
      ```bash
      docker ps
      ```
@@ -102,7 +100,7 @@ Here's how to start the complete project with MongoDB, backend, and frontend:
    - Click "Create Cluster"
 3. Set up database access:
    - Go to "Database Access" and add a new user with username/password
-   - Go to "Network Access" and add your IP address (or allow from anywhere: `0.0.0.0/0` for development)
+   - Go to "Network Access" and add your IP address (or `0.0.0.0/0` for development only - ⚠️ not recommended for production as it allows access from anywhere)
 4. Get your connection string:
    - Click "Connect" on your cluster
    - Choose "Connect your application"
