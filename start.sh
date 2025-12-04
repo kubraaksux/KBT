@@ -22,14 +22,21 @@ else
     # Try to start MongoDB based on OS
     if [[ "$OSTYPE" == "darwin"* ]]; then
         # macOS
-        brew services start mongodb-community 2>/dev/null || echo "Please install MongoDB via: brew install mongodb-community"
+        if ! brew services start mongodb-community 2>/dev/null; then
+            echo "⚠️  Please install MongoDB via: brew install mongodb-community"
+            echo "Or start it manually before running this script"
+        fi
     elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        # Linux
-        sudo systemctl start mongod 2>/dev/null || docker run -d -p 27017:27017 --name kbt-mongodb mongo:latest 2>/dev/null || echo "Please start MongoDB manually"
+        # Linux - try systemctl first
+        if ! sudo systemctl start mongod 2>/dev/null; then
+            echo "⚠️  MongoDB is not installed as a service."
+            echo "Please install MongoDB or use Docker:"
+            echo "  docker run -d -p 27017:27017 --name kbt-mongodb mongo:latest"
+        fi
     fi
     
     sleep 2
-    echo -e "${GREEN}✓ MongoDB started${NC}"
+    echo -e "${GREEN}✓ MongoDB startup attempted${NC}"
 fi
 
 echo ""

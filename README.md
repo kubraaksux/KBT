@@ -70,6 +70,10 @@ docker-compose up
 
 This starts MongoDB, backend, and frontend in containers. Access at http://localhost:5173
 
+**Note**: The frontend in the browser will connect to the backend at http://localhost:8000 (not the Docker internal network).
+
+To stop: `docker-compose down`
+
 **Option 3: Manual Setup** (see detailed instructions below)
 
 ---
