@@ -58,7 +58,7 @@ Before you begin, ensure you have the following installed:
 2. **Create a virtual environment** (recommended):
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. **Install dependencies**:
@@ -193,7 +193,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 ```bash
 cd frontend
 npm run build
-npm run start
+npm start
 ```
 
 ## 📝 Notes
