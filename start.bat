@@ -48,6 +48,7 @@ if not exist ".env" (
 )
 
 REM Start backend
+REM Note: Using 0.0.0.0 for development. For production, use 127.0.0.1 or configure properly.
 echo Starting FastAPI server...
 start "KBT Backend" cmd /k "uvicorn main:app --reload --host 0.0.0.0 --port 8000"
 
