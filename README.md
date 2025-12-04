@@ -48,6 +48,116 @@ Before you begin, ensure you have the following installed:
 - Node.js 18.x or higher
 - npm (comes with Node.js)
 
+## 🚦 Quick Start (All Components)
+
+Here's how to start the complete project with MongoDB, backend, and frontend:
+
+### Step 1: Start MongoDB
+
+**Option A: Using MongoDB locally (recommended for development)**
+
+1. **Install MongoDB Community Edition**:
+   - **macOS** (using Homebrew):
+     ```bash
+     brew tap mongodb/brew
+     brew install mongodb-community
+     ```
+   - **Ubuntu/Debian**:
+     ```bash
+     sudo apt-get install -y mongodb-org
+     ```
+   - **Windows**: Download from [MongoDB Download Center](https://www.mongodb.com/try/download/community)
+
+2. **Start MongoDB**:
+   - **macOS** (using Homebrew):
+     ```bash
+     brew services start mongodb-community
+     ```
+   - **Ubuntu/Debian**:
+     ```bash
+     sudo systemctl start mongod
+     ```
+   - **Windows**: MongoDB runs as a service automatically after installation, or run:
+     ```bash
+     mongod
+     ```
+
+3. **Verify MongoDB is running**:
+   ```bash
+   mongosh  # Or 'mongo' for older versions
+   # You should see a MongoDB shell prompt
+   ```
+
+**Option B: Using MongoDB Atlas (cloud, free tier available)**
+1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+2. Create a cluster and get your connection string
+3. Use the connection string in your `.env` file (replace `MONGO_URI`)
+
+### Step 2: Start the Backend
+
+1. **Navigate to backend directory and create virtual environment**:
+   ```bash
+   cd backend
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Create `.env` file** in the `backend` directory:
+   ```env
+   MONGO_URI=mongodb://localhost:27017/
+   MONGO_DB_NAME=kbt
+   MODEL_NAME=meta-llama/Llama-3.2-1B
+   ```
+
+4. **Start the backend server**:
+   ```bash
+   uvicorn main:app --reload --host 0.0.0.0 --port 8000
+   ```
+   
+   ✅ Backend will be running at `http://localhost:8000`
+
+### Step 3: Start the Frontend
+
+Open a **new terminal window** (keep backend running):
+
+1. **Navigate to frontend directory**:
+   ```bash
+   cd frontend
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Create `.env` file** in the `frontend` directory:
+   ```env
+   BACKEND_URL=http://localhost:8000
+   ```
+
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+   
+   ✅ Frontend will be running at `http://localhost:5173`
+
+### 🎉 Access the Application
+
+Open your browser and navigate to:
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:8000
+- **API Docs**: http://localhost:8000/docs (FastAPI auto-generated documentation)
+
+---
+
+## 📖 Detailed Setup Instructions
+
 ### 🔧 Backend Setup
 
 1. **Navigate to backend directory**:
