@@ -104,8 +104,6 @@ Before you begin, ensure you have the following installed:
    BACKEND_URL=http://localhost:8000
    ```
 
-   **Note**: This project uses React Router v7 with server-side rendering (SSR). Environment variables are accessed via `process.env` on the server and do not require the `VITE_` prefix.
-
 4. **Start the development server**:
    ```bash
    npm run dev
@@ -193,7 +191,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 ```bash
 cd frontend
 npm run build
-npm start
+npm run start
 ```
 
 ## 📝 Notes
