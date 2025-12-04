@@ -1,1 +1,28 @@
 .env
+
+# Logs
+*.log
+backend.log
+frontend.log
+
+# Process IDs
+*.pid
+backend.pid
+frontend.pid
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Node
+node_modules/
+.npm/
+
+# Build outputs
+build/
+dist/
+
+# OS
+.DS_Store

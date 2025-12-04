@@ -34,6 +34,46 @@ This project demonstrates:
 
 ## 🚀 Getting Started
 
+### ⚡ Quick Start (Easiest Way)
+
+**Option 1: Using Startup Scripts** (Recommended)
+
+Run everything with a single command:
+
+- **macOS/Linux**:
+  ```bash
+  ./start.sh
+  ```
+
+- **Windows**:
+  ```bash
+  start.bat
+  ```
+
+The script will automatically:
+- Start MongoDB
+- Create and activate Python virtual environment
+- Install all dependencies
+- Create .env files with default configuration
+- Start backend on http://localhost:8000
+- Start frontend on http://localhost:5173
+
+To stop everything: `./stop.sh` (macOS/Linux)
+
+**Option 2: Using Docker Compose**
+
+If you have Docker installed:
+
+```bash
+docker-compose up
+```
+
+This starts MongoDB, backend, and frontend in containers. Access at http://localhost:5173
+
+**Option 3: Manual Setup** (see detailed instructions below)
+
+---
+
 ### Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -48,7 +88,7 @@ Before you begin, ensure you have the following installed:
 - Node.js 18.x or higher
 - npm (comes with Node.js)
 
-## 🚦 Quick Start (All Components)
+## 🚦 Manual Setup (All Components)
 
 Here's how to start the complete project with MongoDB, backend, and frontend:
 
