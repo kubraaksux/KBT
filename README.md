@@ -62,9 +62,9 @@ Here's how to start the complete project with MongoDB, backend, and frontend:
      brew tap mongodb/brew
      brew install mongodb-community
      ```
-   - **Ubuntu/Debian**:
+   - **Ubuntu/Debian**: Follow the [official MongoDB installation guide](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/) or use Docker:
      ```bash
-     sudo apt-get install -y mongodb-org
+     docker run -d -p 27017:27017 --name mongodb mongo:latest
      ```
    - **Windows**: Download from [MongoDB Download Center](https://www.mongodb.com/try/download/community)
 
@@ -73,9 +73,13 @@ Here's how to start the complete project with MongoDB, backend, and frontend:
      ```bash
      brew services start mongodb-community
      ```
-   - **Ubuntu/Debian**:
+   - **Ubuntu/Debian** (if installed via package manager):
      ```bash
      sudo systemctl start mongod
+     ```
+   - **Docker** (any platform):
+     ```bash
+     # MongoDB should already be running from the docker run command above
      ```
    - **Windows**: MongoDB runs as a service automatically after installation, or run:
      ```bash
@@ -84,7 +88,7 @@ Here's how to start the complete project with MongoDB, backend, and frontend:
 
 3. **Verify MongoDB is running**:
    ```bash
-   mongosh  # Or 'mongo' for older versions
+   mongosh
    # You should see a MongoDB shell prompt
    ```
 
