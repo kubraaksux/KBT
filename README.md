@@ -78,12 +78,14 @@ Here's how to start the complete project with MongoDB, backend, and frontend:
      sudo systemctl start mongod
      ```
    - **Docker** (any platform):
+     
+     MongoDB should already be running from the docker run command above. Verify with:
      ```bash
-     # MongoDB should already be running from the docker run command above
+     docker ps
      ```
-   - **Windows**: MongoDB runs as a service automatically after installation, or run:
+   - **Windows**: MongoDB runs as a Windows service automatically after installation. To verify it's running, check Services or run:
      ```bash
-     mongod
+     net start MongoDB
      ```
 
 3. **Verify MongoDB is running**:
@@ -94,8 +96,19 @@ Here's how to start the complete project with MongoDB, backend, and frontend:
 
 **Option B: Using MongoDB Atlas (cloud, free tier available)**
 1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a cluster and get your connection string
-3. Use the connection string in your `.env` file (replace `MONGO_URI`)
+2. Create a cluster:
+   - Select "Shared" (free tier)
+   - Choose your preferred cloud provider and region
+   - Click "Create Cluster"
+3. Set up database access:
+   - Go to "Database Access" and add a new user with username/password
+   - Go to "Network Access" and add your IP address (or allow from anywhere: `0.0.0.0/0` for development)
+4. Get your connection string:
+   - Click "Connect" on your cluster
+   - Choose "Connect your application"
+   - Copy the connection string (format: `mongodb+srv://<username>:<password>@cluster.xxxxx.mongodb.net/`)
+   - Replace `<username>` and `<password>` with your database user credentials
+5. Use this connection string as `MONGO_URI` in your backend `.env` file
 
 ### Step 2: Start the Backend
 
