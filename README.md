@@ -1,212 +1,147 @@
-# KBT - Chat Application
+# Full-Stack LLM Chat
 
-KBT is a full stack AI powered chat application that allows users to interact with a Large Language Model (LLM) for intelligent conversations. The application maintains chat history and provides a seamless user experience through a modern web interface.
+A learning-oriented full-stack application for exploring local LLM inference, conversational state, and AI product architecture. The project combines a FastAPI service, MongoDB persistence, a TypeScript/React interface, and a Hugging Face LLaMA-family model.
 
-## What is this project?
+The goal is to develop a technically grounded application that connects lessons from NLP coursework, production AI experience, retrieval-augmented generation, and multi-agent systems—without reproducing proprietary code from previous work.
 
-This project demonstrates:
-- **AI Chat System**: Integration with transformer based language models for intelligent conversations
-- **Full stack Architecture**: Modern separation of concerns with a Python FastAPI backend and React frontend
-- **Data Persistence**: MongoDB integration for storing users and chat histories
-- **Real time Interactions**: Chat interface that maintains conversation context across messages
+## Current capabilities
 
-## 🏗️ Architecture
+- [x] FastAPI backend
+- [x] MongoDB-backed users and chat history
+- [x] Hugging Face transformer model integration
+- [x] Conversation context across messages
+- [x] React Router and TypeScript frontend
+- [x] User and chat retrieval endpoints
+- [x] Environment-based database and model configuration
+
+## Current architecture
+
+```mermaid
+flowchart LR
+    UI[React client] --> API[FastAPI service]
+    API --> DB[(MongoDB)]
+    API --> LLM[Local LLM]
+```
 
 ### Backend
-- **Framework**: FastAPI (Python)
-- **Database**: MongoDB
-- **AI/ML**: Hugging Face Transformers (LLaMA-based models)
-- **Key Features**:
-  - User management endpoints
-  - Chat management with conversation history
-  - AI-powered response generation using LLM
+
+- Python and FastAPI
+- MongoDB persistence
+- Hugging Face Transformers
+- User and conversation-history routes
 
 ### Frontend
-- **Framework**: React Router v7
-- **Language**: TypeScript
-- **Styling**: TailwindCSS
-- **Features**:
-  - User listing and selection
-  - Interactive chat interface
-  - Real-time message updates
 
-## 🚀 Getting Started
+- React Router v7
+- TypeScript
+- Tailwind CSS
+- User selection and conversational interface
 
-### Prerequisites
+## API
 
-Before you begin, ensure you have the following installed:
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `GET` | `/users/` | List users |
+| `GET` | `/users/{id}` | Retrieve one user |
+| `GET` | `/users/{id}/chats` | Retrieve a user's chats |
+| `GET` | `/chats/{id}` | Retrieve one chat |
+| `POST` | `/chats/{id}/answer` | Add a message and generate a response |
 
-#### For Backend:
-- Python 3.8 or higher
-- pip (Python package manager)
-- MongoDB (local or cloud instance)
-- Sufficient RAM/GPU for running LLM models (recommended: 8GB+ RAM)
+## Setup
 
-#### For Frontend:
-- Node.js 18.x or higher
-- npm (comes with Node.js)
+### Backend
 
-### 🔧 Backend Setup
-
-1. **Navigate to backend directory**:
-   ```bash
-   cd backend
-   ```
-
-2. **Create a virtual environment** (recommended):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure environment variables**:
-   Create a `.env` file in the `backend` directory with the following variables:
-   ```env
-   MONGO_URI=mongodb://localhost:27017/  # Your MongoDB connection string
-   MONGO_DB_NAME=kbt                      # Your database name
-   MODEL_NAME=meta-llama/Llama-3.2-1B    # Hugging Face model name
-   ```
-
-   **Important Notes**:
-   - Replace `MONGO_URI` with your MongoDB connection string (local or cloud like MongoDB Atlas)
-   - Choose an appropriate model for `MODEL_NAME` based on your hardware capabilities
-   - First-time model download may take time depending on model size
-
-5. **Start the backend server**:
-   ```bash
-   uvicorn main:app --reload --host 0.0.0.0 --port 8000
-   ```
-
-   The backend API will be available at `http://localhost:8000`
-
-### 🎨 Frontend Setup
-
-1. **Navigate to frontend directory**:
-   ```bash
-   cd frontend
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables**:
-   Create a `.env` file in the `frontend` directory:
-   ```env
-   BACKEND_URL=http://localhost:8000
-   ```
-
-4. **Start the development server**:
-   ```bash
-   npm run dev
-   ```
-
-   The frontend application will be available at `http://localhost:5173`
-
-## 📚 API Endpoints
-
-### User Routes (`/users`)
-- `GET /users/` - Get all users
-- `GET /users/{id}` - Get a specific user by ID
-- `GET /users/{id}/chats` - Get all chats for a specific user
-
-### Chat Routes (`/chats`)
-- `GET /chats/{id}` - Get a specific chat by ID
-- `POST /chats/{id}/answer` - Send a message and get AI-generated response
-  - Body: `{ "query": "your message here" }`
-
-## 🗂️ Project Structure
-
-```
-KBT/
-├── backend/
-│   ├── config/
-│   │   ├── db.py           # MongoDB connection
-│   │   └── model.py        # LLM model initialization
-│   ├── routes/
-│   │   ├── users.py        # User endpoints
-│   │   └── chats.py        # Chat endpoints
-│   ├── main.py             # FastAPI application entry point
-│   └── requirements.txt    # Python dependencies
-├── frontend/
-│   ├── app/
-│   │   ├── routes/         # React Router pages
-│   │   ├── components/     # Reusable UI components
-│   │   └── types.tsx       # TypeScript type definitions
-│   ├── package.json        # Node dependencies
-│   └── vite.config.ts      # Vite configuration
-└── README.md               # This file
-```
-
-## 🎯 Where is it going? (Roadmap)
-
-### Current Features
-- ✅ User management system
-- ✅ Chat history storage
-- ✅ AI-powered chat responses with context awareness
-- ✅ Modern, responsive UI
-
-### Planned Features
-- 🔲 User authentication and authorization
-- 🔲 Create new users and chats from the UI
-- 🔲 Multiple chat sessions per user
-- 🔲 Chat deletion and management
-- 🔲 Model selection and customization
-- 🔲 Export chat history
-- 🔲 Improved error handling and validation
-- 🔲 Real-time streaming responses
-- 🔲 File upload and document analysis
-- 🔲 Deployment guides (Docker, Cloud platforms)
-
-## 🛠️ Development
-
-### Running Tests
 ```bash
-# Backend (when tests are added)
 cd backend
-pytest
-
-# Frontend
-cd frontend
-npm test
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-### Building for Production
+Create `backend/.env`:
 
-**Backend**:
-The FastAPI application is production-ready. Use a production ASGI server:
+```env
+MONGO_URI=mongodb://localhost:27017/
+MONGO_DB_NAME=kbt
+MODEL_NAME=meta-llama/Llama-3.2-1B
+```
+
+Run:
+
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-**Frontend**:
+### Frontend
+
 ```bash
 cd frontend
-npm run build
-npm run start
+npm install
+npm run dev
 ```
 
-## 📝 Notes
+Set `BACKEND_URL=http://localhost:8000` in `frontend/.env`.
 
-- First run will download the LLM model, which may take significant time
-- Ensure MongoDB is running before starting the backend
-- Model inference requires adequate computational resources
-- For production use, consider using GPU acceleration for better LLM performance
+## Engineering roadmap
 
-## 🤝 Contributing
+These items are planned, not currently implemented.
 
-This project is in active development. Contributions, issues, and feature requests are welcome!
+### Reliability and testing
 
-## 📄 License
+- [ ] Backend unit and integration tests
+- [ ] Frontend component tests
+- [ ] Request validation and consistent error responses
+- [ ] Health/readiness endpoints
+- [ ] Structured application logging
 
-[Add your license information here]
+### Production-style LLM serving
 
----
+- [ ] Server-Sent Events token streaming
+- [ ] Accurate input/output token accounting
+- [ ] Latency and time-to-first-token instrumentation
+- [ ] Generation cancellation and timeout handling
+- [ ] Model selection and configuration validation
+- [ ] Rate limiting and request concurrency controls
 
-Built with ❤️ using FastAPI, React Router, and Hugging Face Transformers
+### Security and deployment
+
+- [ ] Authentication and authorization
+- [ ] Secret-management documentation
+- [ ] Docker Compose for frontend, backend, and MongoDB
+- [ ] CI for tests and linting
+- [ ] Deployment guide
+
+### RAG and multi-agent learning
+
+- [ ] Document ingestion and citation-grounded answers
+- [ ] Integrate XRAG through a service boundary instead of duplicating its retrieval framework
+- [ ] Add retrieval and answer-quality evaluation
+- [ ] Experiment with corrective RAG as an evaluated XRAG strategy
+- [ ] Add a small multi-agent workflow with explicit roles, shared state, and traceable handoffs
+- [ ] Compare the multi-agent workflow against a single-agent baseline
+
+## Scope
+
+This repository is intentionally an educational product prototype. Retrieval experiments and benchmark methodology belong in the separate XRAG evaluation framework; this application focuses on the service boundary, conversational UX, persistence, streaming, observability, and deployment concerns.
+
+## Project structure
+
+```text
+backend/
+  config/
+    db.py
+    model.py
+  routes/
+    users.py
+    chats.py
+  main.py
+frontend/
+  app/
+    components/
+    routes/
+    types.tsx
+```
+
+## License
+
+A license has not yet been selected. Do not assume permission to redistribute this project until a license is added.
